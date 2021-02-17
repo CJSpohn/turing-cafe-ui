@@ -16,11 +16,15 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const results = await fetch('http://localhost:3001/api/v1/reservations')
-    const data = await results.json()
-    this.setState({
-      reservations: data
-    })
+    try {
+      const results = await fetch('http://localhost:3001/api/v1/reservations')
+      const data = await results.json()
+      this.setState({
+        reservations: data
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   render() {
