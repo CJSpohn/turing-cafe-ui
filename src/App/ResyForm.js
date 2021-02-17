@@ -62,7 +62,6 @@ class ResyForm extends React.Component {
   render() {
     return (
       <div className="form-wrapper">
-        {this.state.error && <h1 className="error">{this.state.error}</h1>}
         <form className="form">
           <input
             className="input"
@@ -98,6 +97,7 @@ class ResyForm extends React.Component {
           />
           <button className="button" onClick={this.submitReservation}>Make Reservation</button>
         </form>
+        {this.state.error && <h1 className="error">{this.state.error}</h1>}
       </div>
     )
   }

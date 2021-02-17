@@ -8,6 +8,7 @@
 
 .error {
   font-size: 1.3rem;
+  font-weight: 400;
   color: maroon;
   background-color: grey;
   width: 50%;
