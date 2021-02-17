@@ -1,0 +1,22 @@
+.form {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.input,
+.button {
+  padding: 2px 0 2px 5px;
+  font-size: 1.2rem;
+  width: 200px;
+  height: 30px;
+}
+
+.button {
+  width: 200px;
+  height: 40px;
+  color: white;
+  background-color: #2A8080;
+  border: 1px solid white;
+}

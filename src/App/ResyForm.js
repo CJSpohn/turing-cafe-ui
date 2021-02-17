@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './ResyForm.css';
 
 class ResyForm extends React.Component {
   constructor() {
@@ -19,7 +20,7 @@ class ResyForm extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="form">
         <input
           className="input"
           type="text"
@@ -52,7 +53,7 @@ class ResyForm extends React.Component {
           value={this.state.guests}
           onChange={this.handleChange}
         />
-        <button onClick={this.submitReservation}>Make Reservation</button>
+        <button className="button" onClick={this.submitReservation}>Make Reservation</button>
       </form>
     )
   }
