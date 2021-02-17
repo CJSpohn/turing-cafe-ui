@@ -15,6 +15,7 @@ class ResyForm extends React.Component {
 
   handleChange = event => {
     this.setState({
+      error: '',
       [event.target.name]: event.target.value
     })
   }
@@ -60,41 +61,44 @@ class ResyForm extends React.Component {
 
   render() {
     return (
-      <form className="form">
-        <input
-          className="input"
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={this.state.name}
-          onChange={this.handleChange}
-        />
-        <input
-          className="input"
-          type="text"
-          placeholder="Date (mm/dd)"
-          name="date"
-          value={this.state.date}
-          onChange={this.handleChange}
-        />
-        <input
-          className="input"
-          type="text"
-          placeholder="Time (7:00)"
-          name="time"
-          value={this.state.time}
-          onChange={this.handleChange}
-        />
-        <input
-          className="input"
-          type="text"
-          placeholder="Number of guests"
-          name="number"
-          value={this.state.number}
-          onChange={this.handleChange}
-        />
-        <button className="button" onClick={this.submitReservation}>Make Reservation</button>
-      </form>
+      <div className="form-wrapper">
+        {this.state.error && <h1 className="error">{this.state.error}</h1>}
+        <form className="form">
+          <input
+            className="input"
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          <input
+            className="input"
+            type="text"
+            placeholder="Date (mm/dd)"
+            name="date"
+            value={this.state.date}
+            onChange={this.handleChange}
+          />
+          <input
+            className="input"
+            type="text"
+            placeholder="Time (7:00)"
+            name="time"
+            value={this.state.time}
+            onChange={this.handleChange}
+          />
+          <input
+            className="input"
+            type="text"
+            placeholder="Number of guests"
+            name="number"
+            value={this.state.number}
+            onChange={this.handleChange}
+          />
+          <button className="button" onClick={this.submitReservation}>Make Reservation</button>
+        </form>
+      </div>
     )
   }
 }
