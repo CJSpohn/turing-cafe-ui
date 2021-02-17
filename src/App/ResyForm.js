@@ -8,7 +8,7 @@ class ResyForm extends React.Component {
       name: '',
       date: '',
       time: '',
-      guests: ''
+      number: ''
     }
   }
 
@@ -19,15 +19,15 @@ class ResyForm extends React.Component {
   }
 
   clearInputs = () => {
-    this.setState({ name: '', date: '', time: '', guests: ''  });
+    this.setState({ name: '', date: '', time: '', number: ''  });
   }
 
   submitReservation = event => {
     event.preventDefault();
     const newRes = {
-      id: Date.now(),
       ...this.state
     }
+    newRes.number = parseInt(newRes.number)
     this.props.addReservation(newRes)
     this.clearInputs()
   }
@@ -54,7 +54,7 @@ class ResyForm extends React.Component {
         <input
           className="input"
           type="text"
-          placeholder="Time"
+          placeholder="Time (7:00)"
           name="time"
           value={this.state.time}
           onChange={this.handleChange}
@@ -63,8 +63,8 @@ class ResyForm extends React.Component {
           className="input"
           type="text"
           placeholder="Number of guests"
-          name="guests"
-          value={this.state.guests}
+          name="number"
+          value={this.state.number}
           onChange={this.handleChange}
         />
         <button className="button" onClick={this.submitReservation}>Make Reservation</button>

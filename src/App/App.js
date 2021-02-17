@@ -11,8 +11,21 @@ class App extends Component {
     }
   }
 
-  addReservation = newRes => {
-    this.setState({reservations: [...this.state.reservations, newRes]})
+  addReservation = async newRes => {
+    try {
+      const results = await fetch('http://localhost:3001/api/v1/reservations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newRes)
+      })
+      const content = await results.json()
+      this.setState({reservations: [...this.state.reservations, newRes]})
+    } catch(e) {
+      console.log(e)
+    }
+
   }
 
   componentDidMount = async () => {
