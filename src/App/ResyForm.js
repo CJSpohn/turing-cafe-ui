@@ -25,7 +25,6 @@ class ResyForm extends React.Component {
   }
 
   verifyInputs = () => {
-    console.log(!this.state.name)
     if (!this.state.name) {
       this.setState({ error: 'Please include a name.' })
     } else if (!this.state.date || !this.state.date.includes('/')) {
