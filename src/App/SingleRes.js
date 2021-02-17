@@ -2,7 +2,6 @@ import React from 'react';
 import './SingleRes.css'
 
 const SingleRes = ({res}) => {
-  console.log(res)
   return (
     <article className="res-wrapper">
       <h2 className="res-name">{res.name}</h2>
