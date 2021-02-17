@@ -2,8 +2,8 @@ import React from 'react';
 import './ResyForm.css';
 
 class ResyForm extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       name: '',
       date: '',
@@ -16,6 +16,20 @@ class ResyForm extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+  }
+
+  clearInputs = () => {
+    this.setState({ name: '', date: '', time: '', guests: ''  });
+  }
+
+  submitReservation = event => {
+    event.preventDefault();
+    const newRes = {
+      id: Date.now(),
+      ...this.state
+    }
+    this.props.addReservation(newRes)
+    this.clearInputs()
   }
 
   render() {

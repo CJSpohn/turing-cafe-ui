@@ -11,6 +11,10 @@ class App extends Component {
     }
   }
 
+  addReservation = newRes => {
+    this.setState({reservations: [...this.state.reservations, newRes]})
+  }
+
   componentDidMount = async () => {
     const results = await fetch('http://localhost:3001/api/v1/reservations')
     const data = await results.json()
@@ -23,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <ResyForm />
+        <ResyForm addReservation={this.addReservation}/>
         <ResyContainer reservations={this.state.reservations} />
       </div>
     )
