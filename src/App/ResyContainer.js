@@ -1,9 +1,10 @@
 import React from 'react';
+import SingleRes from './SingleRes'
 import './ResyContainer.css'
 
 const ResyContainer = ({ reservations }) => {
   const reservsToDisplay = reservations.map((res, index) => {
-    return <h1 key={index}>{res.name}</h1>
+    return <SingleRes key={index} res={res}/>
   })
 
   return (
