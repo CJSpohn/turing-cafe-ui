@@ -24,33 +24,38 @@ class ResyForm extends React.Component {
   }
 
   verifyInputs = () => {
+    console.log(!this.state.name)
     if (!this.state.name) {
-      return this.setState({
-        error: 'Please include a name.'
-      })
+      this.setState({ error: 'Please include a name.' })
     } else if (!this.state.date || !this.state.date.includes('/')) {
-      return this.setState({
+      this.setState({
         error: 'Please include a date in the correct format (mm/dd).'
       })
     } else if (!this.state.time || !this.state.date.includes(':')) {
-      return this.setState({
+      this.setState({
         error: 'Please include a time in the correct format (4:15).'
       })
     } else if (!this.state.guests) {
-      return this.setState({
+      this.setState({
         error: 'Please include the number of guests in attendance.'
       })
     }
   }
 
-  submitReservation = event => {
+  submitReservation = async event => {
     event.preventDefault();
-    const newRes = {
-      ...this.state
+    await this.verifyInputs();
+    if (!this.state.error) {
+      const newRes = {
+        name: this.state.name,
+        date: this.state.date,
+        time: this.state.time,
+        number: this.state.number
+      }
+      newRes.number = parseInt(newRes.number)
+      this.props.addReservation(newRes)
+      this.clearInputs()
     }
-    newRes.number = parseInt(newRes.number)
-    this.props.addReservation(newRes)
-    this.clearInputs()
   }
 
   render() {
