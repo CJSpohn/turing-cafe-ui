@@ -50,3 +50,37 @@ describe('the form', () => {
       .should('have.value', '8')
   })
 })
+
+describe('adding a reservation', () => {
+  it('should render a new card when a reservation is added', () => {
+    cy.get('form button')
+      .click()
+
+    cy.get('section')
+      .children()
+      .should('have.length', 10)
+  })
+
+  it('the new card should display the correct information', () => {
+    cy.get('section')
+      .children('article:nth-child(10)')
+      .get('h2')
+      .should('contain', 'Chris')
+
+    cy.get('section')
+      .children('article:nth-child(10)')
+      .get('h3')
+      .should('contain', '12/10')
+
+    cy.get('section')
+      .children('article:nth-child(10)')
+      .get('p')
+      .should('contain', '7:30')
+
+
+    cy.get('section')
+      .children('article:nth-child(10)')
+      .get('p:nth-of-type(2)')
+      .should('contain', '8')
+  })
+})
