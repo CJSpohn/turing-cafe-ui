@@ -11,16 +11,25 @@ class App extends Component {
     }
   }
 
+  deleteReservation = async (id) => {
+    try {
+      await fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+        method: 'DELETE'
+      })
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   addReservation = async newRes => {
     try {
-      const results = await fetch('http://localhost:3001/api/v1/reservations', {
+      await fetch('http://localhost:3001/api/v1/reservations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(newRes)
       })
-      const content = await results.json()
       this.setState({reservations: [...this.state.reservations, newRes]})
     } catch(e) {
       console.log(e)
@@ -44,8 +53,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <ResyForm addReservation={this.addReservation}/>
-        <ResyContainer reservations={this.state.reservations} />
+        <ResyForm
+          addReservation={this.addReservation}
+        />
+        <ResyContainer
+          reservations={this.state.reservations}
+          deleteReservation={this.deleteReservation}
+        />
       </div>
     )
   }

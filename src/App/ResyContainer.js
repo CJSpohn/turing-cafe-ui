@@ -2,9 +2,15 @@ import React from 'react';
 import SingleRes from './SingleRes'
 import './ResyContainer.css'
 
-const ResyContainer = ({ reservations }) => {
+const ResyContainer = ({ reservations, deleteReservation }) => {
   const reservsToDisplay = reservations.map((res, index) => {
-    return <SingleRes key={index} res={res}/>
+    return (
+      <SingleRes
+        key={index}
+        res={res}
+        deleteReservation={deleteReservation}
+      />
+    )
   })
 
   return (
