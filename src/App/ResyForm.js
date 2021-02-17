@@ -32,11 +32,11 @@ class ResyForm extends React.Component {
       this.setState({
         error: 'Please include a date in the correct format (mm/dd).'
       })
-    } else if (!this.state.time || !this.state.date.includes(':')) {
+    } else if (!this.state.time || !this.state.time.includes(':')) {
       this.setState({
         error: 'Please include a time in the correct format (4:15).'
       })
-    } else if (!this.state.guests) {
+    } else if (!this.state.number) {
       this.setState({
         error: 'Please include the number of guests in attendance.'
       })
