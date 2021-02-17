@@ -8,7 +8,8 @@ class ResyForm extends React.Component {
       name: '',
       date: '',
       time: '',
-      number: ''
+      number: '',
+      error: ''
     }
   }
 
@@ -19,7 +20,27 @@ class ResyForm extends React.Component {
   }
 
   clearInputs = () => {
-    this.setState({ name: '', date: '', time: '', number: ''  });
+    this.setState({ name: '', date: '', time: '', number: '', error: ''});
+  }
+
+  verifyInputs = () => {
+    if (!this.state.name) {
+      return this.setState({
+        error: 'Please include a name.'
+      })
+    } else if (!this.state.date || !this.state.date.includes('/')) {
+      return this.setState({
+        error: 'Please include a date in the correct format (mm/dd).'
+      })
+    } else if (!this.state.time || !this.state.date.includes(':')) {
+      return this.setState({
+        error: 'Please include a time in the correct format (4:15).'
+      })
+    } else if (!this.state.guests) {
+      return this.setState({
+        error: 'Please include the number of guests in attendance.'
+      })
+    }
   }
 
   submitReservation = event => {
