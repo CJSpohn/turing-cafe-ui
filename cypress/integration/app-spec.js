@@ -21,7 +21,7 @@ describe('what should be on the page upon visit', () => {
   it('should find reservations on the page', () => {
     cy.get('section')
       .children()
-      .should('have.length', 9)
+      .should('exist')
   })
 });
 
@@ -58,7 +58,7 @@ describe('adding a reservation', () => {
 
     cy.get('section')
       .children()
-      .should('have.length', 10)
+      .should('exist')
   })
 
   it('the new card should display the correct information', () => {
@@ -82,5 +82,16 @@ describe('adding a reservation', () => {
       .children('article:nth-child(10)')
       .get('p:nth-of-type(2)')
       .should('contain', '8')
+  })
+})
+
+describe('the form validation', () => {
+  it('should create an error when the form inputs are not correct', () => {
+    cy.get('form button')
+      .click()
+
+    cy.get('.form-wrapper h1')
+      .should('exist')
+      .should('contain', 'Please include a name')
   })
 })
