@@ -1,0 +1,17 @@
+.res-wrapper {
+  color: #2A8080;
+  background-color: white;
+  width: 15%;
+  margin: 5px;
+  padding: 5px;
+  border: 5px solid #2A8080;
+  border-radius: 10px;
+}
+
+.res-cancel {
+  color: white;
+  width: 80%;
+  height: 30px;
+  background-color: #2A8080;
+  border: none;
+}
