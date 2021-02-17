@@ -16,6 +16,7 @@ class App extends Component {
       await fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
         method: 'DELETE'
       })
+      this.updateState()
     } catch(e) {
       console.log(e)
     }
@@ -30,14 +31,13 @@ class App extends Component {
         },
         body: JSON.stringify(newRes)
       })
-      this.setState({reservations: [...this.state.reservations, newRes]})
+      this.updateState();
     } catch(e) {
       console.log(e)
     }
-
   }
 
-  componentDidMount = async () => {
+  updateState = async () => {
     try {
       const results = await fetch('http://localhost:3001/api/v1/reservations')
       const data = await results.json()
@@ -47,6 +47,10 @@ class App extends Component {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  componentDidMount = async () => {
+    this.updateState()
   }
 
   render() {
